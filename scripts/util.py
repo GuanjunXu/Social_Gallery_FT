@@ -246,16 +246,17 @@ class Util():
                 *Do not write press menu/share icon step before using
         '''
         d(description = 'Share').click.wait() #Its description is 'Share' in each view
-        try:
-            assert d(text = shareto).wait.exists(timeout = 2000)
-        except:
-            d(text = 'See all').click.wait() #Display all share path
-        finally:
+        if shareto != None:
             try:
                 assert d(text = shareto).wait.exists(timeout = 2000)
             except:
-                d.swipe(500,1050,500,200) #Slide share list up
+                d(text = 'See all').click.wait() #Display all share path
             finally:
-                d(text = shareto).click.wait() #Tap on the path you want to share to
+                try:
+                    assert d(text = shareto).wait.exists(timeout = 2000)
+                except:
+                    d.swipe(500,1050,500,200) #Slide share list up
+                finally:
+                    d(text = shareto).click.wait() #Tap on the path you want to share to
                 
                 
