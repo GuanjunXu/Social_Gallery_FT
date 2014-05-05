@@ -223,7 +223,7 @@ class Util():
 
 
     def tapOnCenter(self):
-        d.click(350,700)    
+        d.click(350,700).wait(2000)    
 
     def enterXView(self,viewmode):
         for i in range (0, ViewModeList.index(viewmode)):
