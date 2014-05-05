@@ -4,7 +4,6 @@ from uiautomator import device as dd
 import unittest
 import time
 import sys
-import os
 import commands
 import string
 import random
@@ -25,24 +24,7 @@ REFRESH_MEDIA = 'adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -
 #All view could be entry
 ViewModeList = ['albumview', 'gridview', 'fullview']
 
-COLUMN_MAX    = 3
-ROW_MAX       = 4
-
-#Get bounds info for the action bar
-ACTBAR_BOUNDS = d(resourceid = ACTBAR_RESID).info.get('bounds')
-#Get bounds info for the main body in gallery
-BODY_BOUNDS   = d(resourceId = GALLEYBODY_RESID).info.get('bounds')
-#Get unit width/height for each item
-UNIT_WIDTH    = int((BODY_BOUNDS['right'] - BODY_BOUNDS['left'])/COLUMN_MAX)
-UNIT_HEIGHT   = int((BODY_BOUNDS['bottom'] - ACTBAR_BOUNDS['bottom'])/ROW_MAX)
-#Get the pos for the first item(left-top corner)
-FIRSTITEM_X   = BODY_BOUNDS['left'] + UNIT_WIDTH/2
-FIRSTITEM_Y   = ACTBAR_BOUNDS['bottom'] + UNIT_HEIGHT/2
-#Get pos for the center
-CENTER_X      = (BODY_BOUNDS['left'] + BODY_BOUNDS['right'])/2
-CENTER_Y      = (BODY_BOUNDS['top'] + BODY_BOUNDS['bottom'])/2
-
-class Util:
+class Util():
     def __init__(self):
         pass
 
@@ -98,24 +80,9 @@ class Util:
             imagesSelect = imagesSelect - 1    
 
     def showPopCard(self):
-        time.sleep(2)
-        d.click(350,100) #The center of the top action bar
-        d.click(350,100) #Sometimes there is no response if tap here only once. Although it has poped up, tap here would do no thing for the case
-        assert d(description = 'Share').wait.exists(timeout = 2000), 'Pop card does not display after tapping on the top bar twice'    
-
-    def pushTestPicture(self,path,targetpath):
-        pathDic = {'Album': '/testalbum/ ',
-                   'Video': '/testvideo/ ',
-                   'Burst': '/testburstpics/ '
-                    }
-        targetpathDic = {'tarAlbum': '/testalbum/',
-                         'tarBurst': '/DCIM/100ANDRO/',
-                         'tarVideo': '/testvideo/'
-                        }
-        adbpushstr = 'adb push ' + sys.path[0] + '/resource' + pathDic[path] + ' /sdcard' + targetpathDic[targetpath]
-        commands.getoutput(adbpushstr)
-        #print adbpushstr
-        commands.getoutput(REFRESH_MEDIA)    
+        d.click(350,100).wait(1000) #The center of the top action bar
+        d.click(350,100).wait(1000) #Sometimes there is no response if tap here only once. Although it has poped up, tap here would do no thing for the case
+        assert d(description = 'Share').wait.exists(timeout = 2000), 'Pop card does not display after tapping on the top bar twice'       
 
 #@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@##@#@#@#
 
@@ -156,20 +123,20 @@ class Util:
         result = commands.getoutput('adb shell ls -l /sdcard/ | grep testalbum | wc -l')
         if string.atoi(result) == 0:
             self._clearAllResource()
-            commands.getoutput('adb push ' + sys.path[1] + '/' + product_name +'/resource/testalbum/ ' + '/sdcard/testalbum')
-            self.sleep(2)
+            commands.getoutput('adb push ' + sys.path[0] + 'resource/testalbum/ ' + '/sdcard/testalbum')
+            time.sleep(2)
         else:
             result1 = commands.getoutput('adb shell ls -l /sdcard/testalbum/test* | grep jpg | wc -l')
             if string.atoi(result1) != 40 :
                 self._clearAllResource()
-                commands.getoutput('adb push ' + sys.path[1] + '/' + product_name + '/resource/testalbum/ ' + '/sdcard/testalbum')
+                commands.getoutput('adb push ' + sys.path[0] + 'resource/testalbum/ ' + '/sdcard/testalbum')
         commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard/')
         
     def _pushResourcesVideo(self):
         result2 = commands.getoutput('adb shell ls -l /sdcard/testvideo/ | grep 3gp | wc -l')
         if string.atoi(result2) == 0:
-            commands.getoutput('adb push ' + sys.path[1] + '/' + product_name + '/resource/testvideo/ '+'/sdcard/testvideo')
-            self.sleep(2)
+            commands.getoutput('adb push ' + sys.path[0] + 'resource/testvideo/ '+'/sdcard/testvideo')
+            time.sleep(2)
         commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard')
     
     def _push1Picture(self):
@@ -177,28 +144,28 @@ class Util:
         resultNO = commands.getoutput('adb shell ls -l /sdcard/testpic1/ | grep jpg | wc -l')
         if string.atoi(result) != 1 :
             self._clearAllResource()
-            commands.getoutput('adb push ' + sys.path[1] + '/' + product_name + '/resource/testpic1/ ' + '/sdcard/testpic1')
+            commands.getoutput('adb push ' + sys.path[0] + 'resource/testpic1/ ' + '/sdcard/testpic1')
         elif string.atoi(resultNO) != 1:
             self._clearAllResource()
-            commands.getoutput('adb push ' + sys.path[1] + '/' + product_name + '/resource/testpic1/ ' + '/sdcard/testpic1')
+            commands.getoutput('adb push ' + sys.path[0] + 'resource/testpic1/ ' + '/sdcard/testpic1')
             
         commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard')
         
     def _pushConvertPicture(self):
         resultNO = commands.getoutput('adb shell ls -l /sdcard/testConvertPics/ | grep jpg | wc -l')
         if string.atoi(resultNO) == 0 :
-            commands.getoutput('adb push ' + sys.path[1] + '/' + product_name + '/resource/testConvertPics/ ' + '/sdcard/testConvertPics')
+            commands.getoutput('adb push ' + sys.path[0] + 'resource/testConvertPics/ ' + '/sdcard/testConvertPics')
         commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard')
     
     def _enterSingleView(self):
         commands.getoutput('adb shell input tap 355 706')
-        self.sleep(2)
+        time.sleep(2)
         commands.getoutput('adb shell input tap 355 706')
-        self.sleep(3)
+        time.sleep(3)
         
     def _enterGridView(self):
         commands.getoutput('adb shell input tap 355 706')
-        self.sleep(2)
+        time.sleep(2)
     
     def _discardGmailDraft(self):
         self.press('menu')
@@ -209,13 +176,13 @@ class Util:
         resultNO = commands.getoutput('adb shell ls -l /sdcard/ | grep test | wc -l')
         if string.atoi(resultNO) != 1:
             self._clearAllResource()
-            commands.getoutput('adb push ' + sys.path[1] + '/' + product_name + '/resource/testvideo/ ' + '/sdcard/testvideo')
+            commands.getoutput('adb push ' + sys.path[0] + 'resource/testvideo/ ' + '/sdcard/testvideo')
             commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard')
         else:
             resultNo1 = commands.getoutput('adb shell ls -l /sdcard/ | grep testvideo | wc -l')
             if string.atoi(resultNo1) != 1:
                 self._clearAllResource()
-                commands.getoutput('adb push ' + sys.path[1] + '/' + product_name + '/resource/testvideo/ ' + '/sdcard/testvideo')
+                commands.getoutput('adb push ' + sys.path[0] + 'resource/testvideo/ ' + '/sdcard/testvideo')
                 commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard')
     
     def _checkBurstResource(self):
@@ -225,13 +192,13 @@ class Util:
         resultNO1 = commands.getoutput('adb shell ls -l /sdcard/DCIM/100ANDRO/ | grep BST | wc -l')
         if string.atoi(resultNO) != string.atoi(resultNO1):
             self._clearAllResource()
-            commands.getoutput('adb push ' + sys.path[1] + '/' + product_name + '/resource/testburstpics/ ' + '/sdcard/DCIM/100ANDRO/')
+            commands.getoutput('adb push ' + sys.path[0] + 'resource/testburstpics/ ' + '/sdcard/DCIM/100ANDRO/')
             commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard')
         elif string.atoi(resultNO1) != 10 :
             self._clearAllResource()
-            commands.getoutput('adb push ' + sys.path[1] + '/' + product_name + '/resource/testburstpics/ ' + '/sdcard/DCIM/100ANDRO/')
+            commands.getoutput('adb push ' + sys.path[0] + 'resource/testburstpics/ ' + '/sdcard/DCIM/100ANDRO/')
             commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard')
-        self.sleep(5)
+        time.sleep(5)
     
     def _getBurstPicturesNum(self):
         result = commands.getoutput('adb  shell ls -l /sdcard/DCIM/100ANDRO/ | grep BST | wc -l')
@@ -256,7 +223,7 @@ class Util:
 
 
     def tapOnCenter(self):
-        d.click(CENTER_X,CENTER_Y)    
+        d.click(350,700)    
 
     def enterXView(self,viewmode):
         for i in range (0, ViewModeList.index(viewmode)):
@@ -265,10 +232,3 @@ class Util:
     def pressBack(self,touchtimes):
         for i in range(0,touchtimes):
             d.press('back')
-            
-            
-            
-            
-            
-            
-            
