@@ -274,4 +274,8 @@ class Util():
                 except:
                     d.swipe(500,1050,500,200) #Slide share list up
                 finally:
+<<<<<<< HEAD
                     d(text = shareto).click.wait() #Tap on the path you want to share to
+=======
+                    d(text = shareto).click.wait() #Tap on the path you want to share to
+>>>>>>> 5a02d69ac30f9d434332f49376815e6e081de56d
