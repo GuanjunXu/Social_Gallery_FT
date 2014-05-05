@@ -24,6 +24,23 @@ REFRESH_MEDIA = 'adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -
 #All view could be entry
 ViewModeList = ['albumview', 'gridview', 'fullview']
 
+COLUMN_MAX    = 3
+ROW_MAX       = 4
+
+# #Get bounds info for the action bar
+# ACTBAR_BOUNDS = d(resourceid = ACTBAR_RESID).info.get('bounds')
+# #Get bounds info for the main body in gallery
+# BODY_BOUNDS   = d(resourceId = GALLEYBODY_RESID).info.get('bounds')
+#Get unit width/height for each item
+# UNIT_WIDTH    = int((BODY_BOUNDS['right'] - BODY_BOUNDS['left'])/COLUMN_MAX)
+# UNIT_HEIGHT   = int((BODY_BOUNDS['bottom'] - ACTBAR_BOUNDS['bottom'])/ROW_MAX)
+# #Get the pos for the first item(left-top corner)
+# FIRSTITEM_X   = BODY_BOUNDS['left'] + UNIT_WIDTH/2
+# FIRSTITEM_Y   = ACTBAR_BOUNDS['bottom'] + UNIT_HEIGHT/2
+# #Get pos for the center
+# CENTER_X      = (BODY_BOUNDS['left'] + BODY_BOUNDS['right'])/2
+# CENTER_Y      = (BODY_BOUNDS['top'] + BODY_BOUNDS['bottom'])/2
+
 class Util():
     def __init__(self):
         pass
@@ -224,7 +241,7 @@ class Util():
 
     def tapOnCenter(self):
         time.sleep(2)
-        d.click(350,700)  
+        d.click(350,700)
 
     def enterXView(self,viewmode):
         for i in range (0, ViewModeList.index(viewmode)):
@@ -233,7 +250,7 @@ class Util():
     def pressBack(self,touchtimes):
         for i in range(0,touchtimes):
             d.press('back')
-            
+
     #Add on May 5th
     def shareItem(self,shareto = None):
         '''
@@ -241,7 +258,7 @@ class Util():
             Usage:
                 If you want to share item with Facebook(this item at the bottom of the share list as default)
                 
-                -shareItem('Facebook')
+                -> shareItem('Facebook')
                 
                 *Do not write press menu/share icon step before using
         '''
@@ -258,5 +275,3 @@ class Util():
                     d.swipe(500,1050,500,200) #Slide share list up
                 finally:
                     d(text = shareto).click.wait() #Tap on the path you want to share to
-                
-                
