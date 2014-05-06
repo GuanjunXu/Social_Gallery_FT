@@ -275,7 +275,6 @@ class Util():
                     d.swipe(500,1050,500,200) #Slide share list up
                 finally:
                     d(text = shareto).click.wait() #Tap on the path you want to share to
-                    d(text = shareto).click.wait() #Tap on the path you want to share to
 
     #Add on May 6th
     def setMenuOptions(self,setoption = None):
