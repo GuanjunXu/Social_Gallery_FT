@@ -281,5 +281,15 @@ class Util():
         d.press('menu')
         d(text = setoption).click.wait()
         
-        
+    #Add on May 6th
+    def deleteItem(self,deleteoption):
+        '''
+           deleteoption has two args: Delete, Cancel(str type, initial capital), usage:
+
+           -> deleteItem('Cancel')
+
+           It means you will cancel deleting image/video file
+        '''
+        d(description = 'Delete').click.wait()
+        d(text = deleteoption).click.wait()
         
