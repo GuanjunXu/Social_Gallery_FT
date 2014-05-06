@@ -277,3 +277,10 @@ class Util():
                     d(text = shareto).click.wait() #Tap on the path you want to share to
                     d(text = shareto).click.wait() #Tap on the path you want to share to
 
+    #Add on May 6th
+    def setMenuOptions(self,setoption = None):
+        d.press('menu')
+        d(text = setoption).click.wait()
+        
+        
+        
