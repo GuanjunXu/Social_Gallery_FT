@@ -1,83 +1,79 @@
 [tests]
-scripts.Fullview.GalleryTest.testSlidePictures
-scripts.Fullview.GalleryTest.testCheckShareListIcons
-scripts.Fullview.GalleryTest.testSharePictureToBlueTooth
-scripts.Fullview.GalleryTest.testSharePictureToPicasa
-scripts.Fullview.GalleryTest.testSharePictureToMessaging
-scripts.Fullview.GalleryTest.testSharePictureToOrkut
-scripts.Fullview.GalleryTest.testSharePictureTowifidirect
-scripts.Fullview.GalleryTest.testSharePictureToGooglePlus
-scripts.Fullview.GalleryTest.testSharePictureToGmail
-scripts.Fullview.GalleryTest.testSharePictureToDrive
-scripts.Fullview.GalleryTest.testSharePictureToFacebook
-scripts.Fullview.GalleryTest.testDeleteSingle
-scripts.Fullview.GalleryTest.testDeleteCancel
-
-scripts.FullViewMenu.GalleryTest.testRotateLeftInSettingMenu
-scripts.FullViewMenu.GalleryTest.testRotateRightInSettingMenu
-scripts.FullViewMenu.GalleryTest.testCropThePhoto
-scripts.FullViewMenu.GalleryTest.testCropCancel
-scripts.FullViewMenu.GalleryTest.testCheckDetail
-scripts.FullViewMenu.GalleryTest.testAddKeyWords
-scripts.FullViewMenu.GalleryTest.testAddEvent
-scripts.FullViewMenu.GalleryTest.testAddVenue
-scripts.FullViewMenu.GalleryTest.testSetPicAsContact
-scripts.FullViewMenu.GalleryTest.testSetPicAsWallpaper
-scripts.FullViewMenu.GalleryTest.testSetPicAsWallpaperCancel
-
-scripts.FullViewFDFR.GalleryTest.testFaceRecognized
-scripts.FullViewFDFR.GalleryTest.testTurnFDFROnOff
-scripts.FullViewFDFR.GalleryTest.testChangeAndRemoveIdentity
-scripts.FullViewFDFR.GalleryTest.testChangeContactPhoto
-scripts.FullViewFDFR.GalleryTest.testEditContactInfo
-scripts.FullViewFDFR.GalleryTest.testFindOtherPhotos
-
-scripts.FullViewVideo.GalleryTest.testPlayVideoFile
-scripts.FullViewVideo.GalleryTest.testShareVideoToYouTube
-
-scripts.FullViewEdit.GalleryTest.testEnterEditScreen
-scripts.FullViewEdit.GalleryTest.testEditWithToneNone
-scripts.FullViewEdit.GalleryTest.testEditWithTonePunch
-scripts.FullViewEdit.GalleryTest.testEditWithToneVintage
-scripts.FullViewEdit.GalleryTest.testEditWithToneBW
-scripts.FullViewEdit.GalleryTest.testEditWithToneBleach
-scripts.FullViewEdit.GalleryTest.testEditWithToneInstant
-scripts.FullViewEdit.GalleryTest.testEditWithToneLatte
-scripts.FullViewEdit.GalleryTest.testEditWithToneBlue
-scripts.FullViewEdit.GalleryTest.testEditWithToneLitho
-scripts.FullViewEdit.GalleryTest.testEditWithToneXProcess
-scripts.FullViewEdit.GalleryTest.testEditWithFrame1
-scripts.FullViewEdit.GalleryTest.testEditWithFrame2
-scripts.FullViewEdit.GalleryTest.testEditWithFrame3
-scripts.FullViewEdit.GalleryTest.testEditWithFrame4
-scripts.FullViewEdit.GalleryTest.testEditWithFrame5
-scripts.FullViewEdit.GalleryTest.testEditWithFrame6
-scripts.FullViewEdit.GalleryTest.testEditWithFrame7
-scripts.FullViewEdit.GalleryTest.testEnterCropScreen
-scripts.FullViewEdit.GalleryTest.testEditWithCropStraighten
-scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio1
-scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio2
-scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio3
-scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio4
-scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio5
-scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio6
-scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio7
-scripts.FullViewEdit.GalleryTest.testEditWithCropWithRotate
-scripts.FullViewEdit.GalleryTest.testEditWithCropWithMirror
-scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithAutocolor
-scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithExposure
-scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithVignette
-scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithContrast
-scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithShadows
-scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithVibrance
-scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithSharpness
-scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithCurves
-scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithHue
-scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithSaturation
-scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithBWFilter
-scripts.FullViewEdit.GalleryTest.testEditWithTonePunchRedoAndUndo
-scripts.FullViewEdit.GalleryTest.testEditWithTonePunchReset
-scripts.FullViewEdit.GalleryTest.testEditWithTonePunchShowHistory
+scripts.Fullview.GalleryTest.testSlidePictures = 1
+scripts.Fullview.GalleryTest.testCheckShareListIcons = 1
+scripts.Fullview.GalleryTest.testSharePictureToBlueTooth = 1
+scripts.Fullview.GalleryTest.testSharePictureToPicasa = 1
+scripts.Fullview.GalleryTest.testSharePictureToMessaging = 1
+scripts.Fullview.GalleryTest.testSharePictureToOrkut = 1
+scripts.Fullview.GalleryTest.testSharePictureTowifidirect = 1
+scripts.Fullview.GalleryTest.testSharePictureToGooglePlus = 1
+scripts.Fullview.GalleryTest.testSharePictureToGmail = 1
+scripts.Fullview.GalleryTest.testSharePictureToDrive = 1
+scripts.Fullview.GalleryTest.testSharePictureToFacebook = 1
+scripts.Fullview.GalleryTest.testDeleteSingle = 1
+scripts.Fullview.GalleryTest.testDeleteCancel = 1
+scripts.FullViewMenu.GalleryTest.testRotateLeftInSettingMenu = 1
+scripts.FullViewMenu.GalleryTest.testRotateRightInSettingMenu = 1
+scripts.FullViewMenu.GalleryTest.testCropThePhoto = 1
+scripts.FullViewMenu.GalleryTest.testCropCancel = 1
+scripts.FullViewMenu.GalleryTest.testCheckDetail = 1
+scripts.FullViewMenu.GalleryTest.testAddKeyWords = 1
+scripts.FullViewMenu.GalleryTest.testAddEvent = 1
+scripts.FullViewMenu.GalleryTest.testAddVenue = 1
+scripts.FullViewMenu.GalleryTest.testSetPicAsContact = 1
+scripts.FullViewMenu.GalleryTest.testSetPicAsWallpaper = 1
+scripts.FullViewMenu.GalleryTest.testSetPicAsWallpaperCancel = 1
+scripts.FullViewFDFR.GalleryTest.testFaceRecognized = 1
+scripts.FullViewFDFR.GalleryTest.testTurnFDFROnOff = 1
+scripts.FullViewFDFR.GalleryTest.testChangeAndRemoveIdentity = 1
+scripts.FullViewFDFR.GalleryTest.testChangeContactPhoto = 1
+scripts.FullViewFDFR.GalleryTest.testEditContactInfo = 1
+scripts.FullViewFDFR.GalleryTest.testFindOtherPhotos = 1
+scripts.FullViewVideo.GalleryTest.testPlayVideoFile = 1
+scripts.FullViewVideo.GalleryTest.testShareVideoToYouTube = 1
+scripts.FullViewEdit.GalleryTest.testEnterEditScreen = 1
+scripts.FullViewEdit.GalleryTest.testEditWithToneNone = 1
+scripts.FullViewEdit.GalleryTest.testEditWithTonePunch = 1
+scripts.FullViewEdit.GalleryTest.testEditWithToneVintage = 1
+scripts.FullViewEdit.GalleryTest.testEditWithToneBW = 1
+scripts.FullViewEdit.GalleryTest.testEditWithToneBleach = 1
+scripts.FullViewEdit.GalleryTest.testEditWithToneInstant = 1
+scripts.FullViewEdit.GalleryTest.testEditWithToneLatte = 1
+scripts.FullViewEdit.GalleryTest.testEditWithToneBlue = 1
+scripts.FullViewEdit.GalleryTest.testEditWithToneLitho = 1
+scripts.FullViewEdit.GalleryTest.testEditWithToneXProcess = 1
+scripts.FullViewEdit.GalleryTest.testEditWithFrame1 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithFrame2 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithFrame3 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithFrame4 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithFrame5 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithFrame6 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithFrame7 = 1
+scripts.FullViewEdit.GalleryTest.testEnterCropScreen = 1
+scripts.FullViewEdit.GalleryTest.testEditWithCropStraighten = 1
+scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio1 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio2 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio3 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio4 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio5 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio6 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithCropWith1ratio7 = 1
+scripts.FullViewEdit.GalleryTest.testEditWithCropWithRotate = 1
+scripts.FullViewEdit.GalleryTest.testEditWithCropWithMirror = 1
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithAutocolor = 1
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithExposure = 1
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithVignette = 1
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithContrast = 1
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithShadows = 1
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithVibrance = 1
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithSharpness = 1
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithCurves = 1
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithHue = 1
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithSaturation = 1
+scripts.FullViewEdit.GalleryTest.testEditWithBrightnessWithBWFilter = 1
+scripts.FullViewEdit.GalleryTest.testEditWithTonePunchRedoAndUndo = 1
+scripts.FullViewEdit.GalleryTest.testEditWithTonePunchReset = 1
+scripts.FullViewEdit.GalleryTest.testEditWithTonePunchShowHistory = 1
 
 
 
