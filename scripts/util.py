@@ -280,6 +280,8 @@ class Util():
     def setMenuOptions(self,setoption = None):
         d.press('menu')
         d(text = setoption).click.wait()
+        if d(text = 'Choose an action').wait.exists(timeout = 2000):
+            d(text = 'com.intel.android.gallery3d').click.wait()
         
     #Add on May 6th
     def deleteItem(self,deleteoption):
