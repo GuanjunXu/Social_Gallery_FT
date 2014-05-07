@@ -156,8 +156,7 @@ class GalleryTest(unittest.TestCase):
                      2.Touch trash icon
                      3.Touch delete
         '''
-        d(description = 'Delete').click.wait()
-        d(text = 'Delete').click.wait()
+        u.deleteItem('Delete')
         assert d(text = 'Delete').wait.gone(timeout = 5000)
 
     def testDeleteCancel(self):
@@ -167,8 +166,7 @@ class GalleryTest(unittest.TestCase):
                      2.Touch trash icon
                      3.Touch cancel
         '''
-        d(description = 'Delete').click.wait()
-        d(text = 'Cancel').click.wait()
+        u.deleteItem('Cancel')
         assert d(text = 'Delete').wait.gone(timeout = 5000)
 
 

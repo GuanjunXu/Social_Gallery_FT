@@ -36,8 +36,7 @@ class GalleryTest(unittest.TestCase):
                      4.Repeat 2-3 steps 4 times
         '''
         for i in range(4):
-            d.press('menu')
-            d(text = 'Rotate left').click.wait()
+            u.setMenuOptions('Rotate left')
             assert d(text = 'Rotate left').wait.gone(timeout = 2000)
 
     def testRotateRightInSettingMenu(self):
@@ -49,8 +48,7 @@ class GalleryTest(unittest.TestCase):
                      4.Repeat 2-3 steps 4 times
         '''
         for i in range(4):
-            d.press('menu')
-            d(text = 'Rotate right').click.wait()
+            u.setMenuOptions('Rotate right')
             assert d(text = 'Rotate right').wait.gone(timeout = 2000)
 
     def testCropThePhoto(self):
@@ -61,8 +59,7 @@ class GalleryTest(unittest.TestCase):
                      3.Click crop 
                      4.Click crop
         '''
-        d.press('menu')
-        d(text = 'Crop').click.wait()
+        u.setMenuOptions('Crop')
         assert d(text = 'Crop picture').wait.exists(timeout = 3000)
         d(text = 'Crop').click.wait()
         assert d(text = 'Crop').wait.gone(timeout = 2000)
@@ -75,8 +72,7 @@ class GalleryTest(unittest.TestCase):
                      3.Click crop 
                      4.Click cancel
         '''
-        d.press('menu')
-        d(text = 'Crop').click.wait()
+        u.setMenuOptions('Crop')
         assert d(text = 'Crop picture').wait.exists(timeout = 3000)
         d(text = 'Cancel').click.wait()
         assert d(text = 'Crop').wait.gone(timeout = 2000)
@@ -89,7 +85,7 @@ class GalleryTest(unittest.TestCase):
                      3.Click Details Item
                      4.Click close
         '''
-        self._showDetails()
+        u.setMenuOptions('Details')
         assert d(resourceId = 'com.intel.android.gallery3d:id/facebook_icon').wait.exists(timeout = 2000)
 
     def testAddKeyWords(self):
@@ -99,7 +95,7 @@ class GalleryTest(unittest.TestCase):
                      2.Add keywords in settings bar
                      3.Click “+” to add new keywords to this photo
         '''
-        self._showDetails()
+        u.setMenuOptions('Details')
         d.swipe(500,1050,500,200) #Swipe detail list up
         d(resourceId = 'com.intel.android.gallery3d:id/addKeywordButton').click.wait()
         d(text = 'Enter new keyword').click.wait() #Make sure keyboard has been invoked
@@ -113,7 +109,7 @@ class GalleryTest(unittest.TestCase):
             Steps:   1.Enter full view
                      2.Add event in settings bar
         '''
-        self._showDetails()
+        u.setMenuOptions('Details')
         d(resourceId = 'com.intel.android.gallery3d:id/event_edit').click.wait()
         d(text = 'Enter new event').click.wait() #Make sure keyboard has been invoked
         d(text = 'Enter new event').set_text('NewEvent')
@@ -126,7 +122,7 @@ class GalleryTest(unittest.TestCase):
             Steps:   1.Enter full view
                      2.Add venue in settings bar
         '''
-        self._showDetails()
+        u.setMenuOptions('Details')
         d(resourceId = 'com.intel.android.gallery3d:id/venue_edit').click.wait()
         d(text = 'Enter new venue').click.wait() #Make sure keyboard has been invoked
         d(text = 'Enter new venue').set_text('NewVenue')
@@ -210,11 +206,9 @@ class GalleryTest(unittest.TestCase):
         d(text = setmode[setact]).click.wait()
 
     def _tapOnDoneButton(self):
+        #Touch on Done button on the soft keyboard
         d.click(650,1130)
 
-    def _showDetails(self):
-        d.press('menu')
-        d(text = 'Details').click.wait()
 
 
 

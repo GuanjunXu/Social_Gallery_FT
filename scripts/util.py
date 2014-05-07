@@ -48,29 +48,29 @@ class Util():
     def holdFirstImage(self):
         d.swipe(FIRSTITEM_X,FIRSTITEM_Y,FIRSTITEM_X + 1,FIRSTITEM_Y + 1)    
 
-    #Before using selectImages, the first image at the left-top corner shall be selected
-    def selectImages(self,selectCount):
-        d.swipe(FIRSTITEM_X,FIRSTITEM_Y,FIRSTITEM_X + 1,FIRSTITEM_Y + 1)
-        selectCount = selectCount - 1
-        x = FIRSTITEM_X
-        y = FIRSTITEM_Y + FIRSTITEM_Y
-        while selectCount > 0:
-            d.click(x, y)
-            time.sleep(1)
-            y = y + FIRSTITEM_Y
-            #When y touch the boundry it means that it need swiching y back to the top
-            if y > BODY_BOUNDS['bottom']:
-                x = x + UNIT_WIDTH
-                y = FIRSTITEM_Y
-            #When x touch the boundry, it means that the images on the screen have all been highlighted. Need slide screen to a new page(without selected)
-            if x > BODY_BOUNDS['right']:
-                for i in range(0,COLUMN_MAX):
-                    d.swipe(UNIT_WIDTH*2, FIRSTITEM_Y, UNIT_WIDTH, FIRSTITEM_Y, steps = 20)
-                    time.sleep(1)
-                #Reset x, y
-                x = FIRSTITEM_X
-                y = FIRSTITEM_Y
-            selectCount = selectCount - 1    
+    # #Before using selectImages, the first image at the left-top corner shall be selected
+    # def selectImages(self,selectCount):
+    #     d.swipe(FIRSTITEM_X,FIRSTITEM_Y,FIRSTITEM_X + 1,FIRSTITEM_Y + 1)
+    #     selectCount = selectCount - 1
+    #     x = FIRSTITEM_X
+    #     y = FIRSTITEM_Y + FIRSTITEM_Y
+    #     while selectCount > 0:
+    #         d.click(x, y)
+    #         time.sleep(1)
+    #         y = y + FIRSTITEM_Y
+    #         #When y touch the boundry it means that it need swiching y back to the top
+    #         if y > BODY_BOUNDS['bottom']:
+    #             x = x + UNIT_WIDTH
+    #             y = FIRSTITEM_Y
+    #         #When x touch the boundry, it means that the images on the screen have all been highlighted. Need slide screen to a new page(without selected)
+    #         if x > BODY_BOUNDS['right']:
+    #             for i in range(0,COLUMN_MAX):
+    #                 d.swipe(UNIT_WIDTH*2, FIRSTITEM_Y, UNIT_WIDTH, FIRSTITEM_Y, steps = 20)
+    #                 time.sleep(1)
+    #             #Reset x, y
+    #             x = FIRSTITEM_X
+    #             y = FIRSTITEM_Y
+    #         selectCount = selectCount - 1    
 
     def launchGallery(self):
         d.start_activity(component = ACTIVITY_NAME)
@@ -260,7 +260,7 @@ class Util():
                 
                 -> shareItem('Facebook')
                 
-                *Do not write press menu/share icon step before using
+                *Do not write press menu/share icon step(s) before using
         '''
         d(description = 'Share').click.wait() #Its description is 'Share' in each view
         if shareto != None:
@@ -275,5 +275,29 @@ class Util():
                     d.swipe(500,1050,500,200) #Slide share list up
                 finally:
                     d(text = shareto).click.wait() #Tap on the path you want to share to
-                    d(text = shareto).click.wait() #Tap on the path you want to share to
 
+    #Add on May 6th
+    def setMenuOptions(self,setoption = None):
+        '''
+            This is only for that menu list could be touched by text items, usage:
+
+            setMenuOptions('Details')
+
+            *You may need inputing initial character as capital
+        '''
+        d.press('menu')
+        d(text = setoption).click.wait()
+        if d(text = 'Choose an action').wait.exists(timeout = 2000):
+            d(text = 'com.intel.android.gallery3d').click.wait()
+
+    #Add on May 6th
+    def deleteItem(self,deleteoption):
+        '''
+           deleteoption has two args: Delete, Cancel(str type, initial capital), usage:
+
+           -> deleteItem('Cancel')
+
+           It means you will cancel deleting image/video file
+        '''
+        d(description = 'Delete').click.wait()
+        d(text = deleteoption).click.wait()
