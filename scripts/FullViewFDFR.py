@@ -22,12 +22,7 @@ class GalleryTest(unittest.TestCase):
         u.launchGallery()
         u.enterXView('fullview')
         self._turnFDFR('On')
-        u.tapOnCenter() #Tap on the face on image
-        #Below is to remove the exists face recognize
-        if d(description = 'Edit menu').wait.exists(timeout = 2000):
-            self._editFDFR('Remove identity')
-        else:
-            d.press('back')
+        self._removeIdentity()
 
     def tearDown(self):
         super(GalleryTest,self).tearDown()
@@ -88,8 +83,6 @@ class GalleryTest(unittest.TestCase):
         assert d(text = 'Create new contact').wait.exists(timeout = 2000)
         u.tapOnCenter() #Tap on the contact on the screen center
         assert d(description = 'Delete').wait.exists(timeout = 2000)
-        #Remove identity
-        u.tapOnCenter() #Tap on the face
         self._removeIdentity()
         u.tapOnCenter()
         assert d(text = 'Create new contact').wait.exists(timeout = 2000)
@@ -157,7 +150,13 @@ class GalleryTest(unittest.TestCase):
 
 
 
-
+    def _removeIdentity(self):
+        u.tapOnCenter() #Tap on the face on image
+        #Below is to remove the exists face recognize
+        if d(description = 'Edit menu').wait.exists(timeout = 2000):
+            self._editFDFR('Remove identity')
+        else:
+            d.press('back')
 
     def _editFDFR(self,fdfroption):
         u.tapOnCenter() #Tap on the face on image
