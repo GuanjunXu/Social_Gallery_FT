@@ -137,7 +137,7 @@ class GalleryTest(unittest.TestCase):
                      3.Click Set picture as 
                      4.Click Contact photo
         '''
-        self._setPicAs('Contact')
+        self._setPicAs('contact')
         assert d(text = '   Find contacts').wait.exists(timeout = 2000)
 
     def testSetPicAsWallpaper(self):
