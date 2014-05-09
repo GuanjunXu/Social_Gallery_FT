@@ -281,7 +281,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply one positive straightening adjustment
                      7.Touch save
         '''
-        self._editAndCheckIamgesCount('geometry','straighten')
+        self._editImage('geometry','straighten')
 
     def testEditWithCropWith1ratio1(self):
         '''
@@ -354,6 +354,7 @@ class GalleryTest(unittest.TestCase):
                      6.Touch save
         '''
         self._editImage('geometry','crop','None')
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithCropWith1ratio7(self):
         '''
@@ -366,6 +367,7 @@ class GalleryTest(unittest.TestCase):
                      6.Touch save
         '''
         self._editImage('geometry','crop','Original')
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithCropWithRotate(self):
         '''
@@ -379,6 +381,7 @@ class GalleryTest(unittest.TestCase):
                      7.Touch Save Icon
         '''
         self._editImage('geometry','rotate')
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithCropWithMirror(self):
         '''
@@ -392,6 +395,7 @@ class GalleryTest(unittest.TestCase):
                      7.Touch Save Icon
         '''
         self._editImage('geometry','flip')
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithBrightnessWithAutocolor(self):
         '''
@@ -404,6 +408,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply and save it
         '''
         self._editImage('colors',1)
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithBrightnessWithExposure(self):
         '''
@@ -416,6 +421,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply and save it
         '''
         self._editImage('colors',2)
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithBrightnessWithVignette(self):
         '''
@@ -428,6 +434,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply and save it
         '''
         self._editImage('colors',3)
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithBrightnessWithContrast(self):
         '''
@@ -440,6 +447,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply and save it
         '''
         self._editImage('colors',4)
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithBrightnessWithShadows(self):
         '''
@@ -452,6 +460,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply and save it
         '''
         self._editImage('colors',5)
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithBrightnessWithVibrance(self):
         '''
@@ -464,6 +473,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply and save it
         '''
         self._editImage('colors',6)
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithBrightnessWithSharpness(self):
         '''
@@ -476,6 +486,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply and save it
         '''
         self._editImage('colors',7)
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithBrightnessWithCurves(self):
         '''
@@ -488,6 +499,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply and save it
         '''
         self._editImage('colors',8)
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithBrightnessWithHue(self):
         '''
@@ -500,6 +512,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply and save it
         '''
         self._editImage('colors',9)
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithBrightnessWithSaturation(self):
         '''
@@ -512,6 +525,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply and save it
         '''
         self._editImage('colors',10)
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithBrightnessWithBWFilter(self):
         '''
@@ -524,6 +538,7 @@ class GalleryTest(unittest.TestCase):
                      6.Apply and save it
         '''
         self._editImage('colors',11)
+        assert d(description = 'Share').wait.exists(timeout = 2000)
 
     def testEditWithTonePunchRedoAndUndo(self):
         '''
@@ -652,13 +667,16 @@ class GalleryTest(unittest.TestCase):
             d(resourceId = 'com.intel.android.gallery3d:id/%sButton'%suboption).click.wait()
         else:
             if suboption < 6:
-                d.click(XITEM + XUNIT * (suboption - 1), YSUB)
+                d(index = suboption-1,focusable = 'false',clickable = 'true').click.wait()
+                #d.click(XITEM + XUNIT * (suboption - 1), YSUB)
             elif suboption == 11:
                 d.swipe(XMAX-1, YSUB, 0, YSUB, 5) #Swipe to the end
-                d.click(XITEM + XUNIT * 4, YSUB)
+                #d.click(XITEM + XUNIT * 4, YSUB)
+                d(index = suboption-1,focusable = 'false',clickable = 'true').click.wait()
             else:
                 d.swipe(XMAX-1, YSUB, 0, YSUB, 60) #Swipe the 5th item to the 0 position(out of screen)
-                d.click(XITEM + XUNIT * (suboption - ITEMCOUNT - 1), YSUB)
+                #d.click(XITEM + XUNIT * (suboption - ITEMCOUNT - 1), YSUB)
+                d(index = suboption-1,focusable = 'false',clickable = 'true').click.wait()
         #When croping image, there are some expend options
         if cropscale != None:
             d(resourceId = 'com.intel.android.gallery3d:id/aspect').click.wait()
@@ -671,10 +689,10 @@ class GalleryTest(unittest.TestCase):
         
     def _editAndCheckIamgesCount(self,bottombutton,suboption,cropscale=None):
         beforeNo = commands.getoutput('adb shell ls -l /sdcard/testalbum/testpictures2 | grep JPG | wc -l')
-        print beforeNo
+        #print beforeNo
         self._editImage(bottombutton,suboption,cropscale)
-        time.sleep(3) #Saving action may take a few seconds
+        time.sleep(5) #Saving action may take a few seconds
         afterNo  = commands.getoutput('adb shell ls -l /sdcard/testalbum/testpictures2 | grep JPG | wc -l')
-        print afterNo
+        #print afterNo
         if string.atoi(afterNo) - string.atoi(beforeNo) == 0:
             self.fail('New image has not been created after editing')
