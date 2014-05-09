@@ -37,11 +37,11 @@ class GalleryTest(unittest.TestCase):
         #Step 2
         for i in range(4):
             self._slideImageRtoL()
-            print i
+            #print i
         #Step 3
         for j in range(4):
             self._slideImageLtoR()
-            print j
+            #print j
 
     def testCheckShareListIcons(self):
         '''
@@ -84,8 +84,9 @@ class GalleryTest(unittest.TestCase):
         u.shareItem('Messaging')
         assert d(text = 'New message').wait.exists(timeout = 2000)
         #Discard the new message
-        d.press('menu')
-        d(text = 'Discard').click.wait()
+        u.setMenuOptions('Discard')
+        #d.press('menu')
+        #d(text = 'Discard').click.wait()
 
     def testSharePictureToOrkut(self):
         '''
@@ -118,6 +119,9 @@ class GalleryTest(unittest.TestCase):
         if d(text = 'Choose account').wait.exists(timeout = 2000):
             d(resourceId = 'com.google.android.apps.plus:id/avatar').click.wait()
         assert d(text = 'Share').wait.exists(timeout = 2000)
+        #Discard it.
+        d.press('back')
+        d(text = 'Yes').click.wait()
 
     def testSharePictureToGmail(self):
         '''
