@@ -141,12 +141,14 @@ class Util():
         if string.atoi(result) == 0:
             self._clearAllResource()
             commands.getoutput('adb push ' + sys.path[0] + 'resource/testalbum/ ' + '/sdcard/testalbum')
+            print 'adb push ' + sys.path[0] + 'resource/testalbum/ ' + '/sdcard/testalbum'
             time.sleep(2)
         else:
             result1 = commands.getoutput('adb shell ls -l /sdcard/testalbum/test* | grep jpg | wc -l')
             if string.atoi(result1) != 40 :
                 self._clearAllResource()
                 commands.getoutput('adb push ' + sys.path[0] + 'resource/testalbum/ ' + '/sdcard/testalbum')
+                print 'adb push ' + sys.path[0] + 'resource/testalbum/ ' + '/sdcard/testalbum'
         commands.getoutput('adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard/')
         
     def _pushResourcesVideo(self):
